@@ -1,0 +1,316 @@
+/* ── Reset & Base ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bronze: #cd7f32;
+  --bronze-light: #f5e6d0;
+  --bronze-dark: #8b5e3c;
+  --silver: #6b7280;
+  --silver-light: #e8edf3;
+  --silver-dark: #374151;
+  --gold: #d97706;
+  --gold-light: #fef3c7;
+  --gold-dark: #92400e;
+  --best: #ecfdf5;
+  --best-border: #10b981;
+  --green: #059669;
+  --red: #dc2626;
+  --text: #111827;
+  --text-muted: #6b7280;
+  --surface: #ffffff;
+  --bg: #f3f4f6;
+  --border: #e5e7eb;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.06);
+  --shadow-lg: 0 4px 6px rgba(0,0,0,.07), 0 10px 30px rgba(0,0,0,.1);
+}
+
+html { font-size: 16px; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ── Page Layout ───────────────────────────────────────────────────────────── */
+.page { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* ── Hero ──────────────────────────────────────────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg, #1e3a5f 0%, #1d4ed8 60%, #0ea5e9 100%);
+  color: #fff;
+  text-align: center;
+  padding: 3.5rem 1.5rem 3rem;
+}
+.hero h1 {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: .5rem;
+}
+.hero p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  opacity: .85;
+}
+
+/* ── Main ──────────────────────────────────────────────────────────────────── */
+main {
+  flex: 1;
+  max-width: 1100px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1rem 2rem;
+}
+
+/* ── Plan Cards (visible only on mobile) ──────────────────────────────────── */
+.cards-section {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.plan-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  position: relative;
+  border: 2px solid var(--border);
+}
+
+.plan-card .card-header {
+  padding: 1.5rem 1.5rem 1rem;
+  text-align: center;
+}
+
+.plan-icon {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  margin: 0 auto .75rem;
+}
+.bronze-icon { background: linear-gradient(135deg, var(--bronze-light), var(--bronze)); }
+.silver-icon { background: linear-gradient(135deg, var(--silver-light), var(--silver)); }
+.gold-icon   { background: linear-gradient(135deg, var(--gold-light), var(--gold)); }
+
+.plan-name {
+  font-size: 1.4rem; font-weight: 700;
+  margin-bottom: .25rem;
+}
+.bronze .plan-name { color: var(--bronze-dark); }
+.silver .plan-name { color: var(--silver-dark); }
+.gold   .plan-name { color: var(--gold-dark); }
+
+.plan-price { font-size: 1rem; color: var(--text-muted); }
+.price-amount { font-size: 1.75rem; font-weight: 800; color: var(--text); }
+
+.highlights {
+  list-style: none;
+  padding: 0 1.5rem 1.5rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+.highlights li {
+  padding: .35rem 0;
+  padding-left: 1.4rem;
+  position: relative;
+  font-size: .95rem;
+  color: var(--text-muted);
+}
+.highlights li::before {
+  content: "✓";
+  position: absolute; left: 0;
+  color: var(--green);
+  font-weight: 700;
+}
+
+/* ── Recommended Badge ─────────────────────────────────────────────────────── */
+.badge-recommended {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #fff;
+  font-size: .72rem; font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: .25rem .65rem;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: .5rem;
+  box-shadow: 0 2px 6px rgba(217,119,6,.35);
+}
+
+.recommended-card {
+  border-color: var(--gold);
+  box-shadow: var(--shadow-lg), 0 0 0 1px var(--gold);
+}
+.recommended-card .card-header { background: var(--gold-light); }
+
+/* ── Table Section ─────────────────────────────────────────────────────────── */
+.table-section { width: 100%; }
+
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  background: var(--surface);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .95rem;
+  min-width: 600px;
+}
+
+/* ── Table Header ──────────────────────────────────────────────────────────── */
+.comparison-table thead tr { background: #1e3a5f; }
+
+.corner-cell {
+  padding: 1.25rem 1.5rem;
+  color: #94a3b8;
+  font-size: .8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  text-align: left;
+  vertical-align: bottom;
+  width: 22%;
+}
+
+.plan-header {
+  padding: 1.25rem 1rem 1rem;
+  text-align: center;
+  vertical-align: bottom;
+  width: 26%;
+  border-left: 1px solid rgba(255,255,255,.08);
+  position: relative;
+}
+
+.bronze-header { background: linear-gradient(180deg, #3d2b1a 0%, #2d1d10 100%); }
+.silver-header { background: linear-gradient(180deg, #1f2937 0%, #111827 100%); }
+.gold-header   { background: linear-gradient(180deg, #451a03 0%, #2d1200 100%); }
+
+.recommended-header {
+  background: linear-gradient(180deg, #78350f 0%, #451a03 100%) !important;
+  box-shadow: inset 0 0 0 2px var(--gold);
+}
+
+.th-plan-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  margin: .35rem 0 .2rem;
+}
+.bronze-header .th-plan-name { color: #f5c588; }
+.silver-header .th-plan-name { color: #cbd5e1; }
+.gold-header   .th-plan-name { color: #fde68a; }
+.recommended-header .th-plan-name { color: #fef3c7; }
+
+.th-plan-price {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fff;
+}
+.th-plan-price small { font-size: .75rem; font-weight: 400; opacity: .75; }
+
+/* ── Table Body ────────────────────────────────────────────────────────────── */
+.comparison-table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background .15s;
+}
+.comparison-table tbody tr:hover { background: #f9fafb; }
+.comparison-table tbody tr:last-child { border-bottom: none; }
+
+.row-label {
+  padding: .85rem 1.5rem;
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  vertical-align: middle;
+  line-height: 1.4;
+}
+.row-label small { font-size: .78rem; font-weight: 400; }
+
+.cell {
+  padding: .85rem 1rem;
+  text-align: center;
+  vertical-align: middle;
+  border-left: 1px solid var(--border);
+  transition: background .15s;
+}
+
+.cell strong { font-size: 1rem; }
+.cell .sub {
+  display: block;
+  font-size: .75rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* Best value highlight */
+.cell.best-value {
+  background: var(--best);
+  position: relative;
+}
+.cell.best-value::after {
+  content: "Best";
+  position: absolute;
+  top: 4px; right: 6px;
+  font-size: .62rem;
+  font-weight: 700;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+/* Icons */
+.icon { font-size: 1.1rem; font-weight: 700; }
+.icon-yes { color: var(--green); }
+.icon-no  { color: var(--red); opacity: .55; }
+
+.benefit-detail {
+  display: inline-block;
+  margin-left: .4rem;
+  font-size: .88rem;
+  color: var(--text);
+}
+.benefit-detail small { color: var(--text-muted); font-size: .75rem; }
+
+.text-green { color: var(--green); }
+
+/* ── Best Value Note ───────────────────────────────────────────────────────── */
+.best-value-note {
+  margin-top: .85rem;
+  font-size: .82rem;
+  color: var(--text-muted);
+  text-align: right;
+}
+.best-value-chip {
+  display: inline-block;
+  background: var(--best);
+  color: var(--green);
+  border: 1px solid var(--best-border);
+  padding: .1rem .45rem;
+  border-radius: 4px;
+  font-size: .75rem;
+  font-weight: 700;
+}
+
+/* ── Footer ────────────────────────────────────────────────────────────────── */
+.footer {
+  background: #1e3a5f;
+  color: #94a3b8;
+  text-align: center;
+  padding: 1.25rem;
+  font-size: .85rem;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .hero { padding: 2.5rem 1rem 2rem; }
+
+  .cards-section { display: flex; }
+  .table-section  { display: none; }
+
+  main { padding: 0 .75rem 2rem; }
+}
